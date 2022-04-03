@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Selenium Test" thread-count="1" parallel="none">
+    <test name="Regression_ui">
+        <packages>
+            <package name="tests.seleniumTests"/>
+        </packages>
+    </test>
+    <test name="Regression_api">
+        <packages>
+            <package name="tests.apiTests"/>
+        </packages>
+    </test>
+</suite>
+
+
