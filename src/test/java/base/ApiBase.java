@@ -3,6 +3,7 @@ package base;
 import io.restassured.RestAssured;
 import io.restassured.config.SSLConfig;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import models.MapBuilder;
 import models.RequestSpecBuilder;
@@ -134,5 +135,10 @@ public class ApiBase {
                 log().all().
                 extract().response();
         return post;
+    }
+
+    public JsonPath getJsonPath (Response res) {
+        String json = res.asString();
+        return new JsonPath(json);
     }
 }
