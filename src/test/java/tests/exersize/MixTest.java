@@ -29,7 +29,7 @@ public class MixTest extends SeleniumBase {
 
     private static final Logger log = LogManager.getLogger(MixTest.class.getName());
 
-    @BeforeMethod
+    @BeforeMethod(timeOut = 60)
     public void addItemInList(){
         CreateItem createItem = new CreateItem(
                 thumbnail,
@@ -41,26 +41,23 @@ public class MixTest extends SeleniumBase {
 
         headers.add("Host");
         headers.add("restool-sample-app.herokuapp.com");
-        log.error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         Response item = apiBase.postRequest(baseUrl, createItem, headers, "/api/character");
-        apiBase.checkStatusCode(item,"300");
+        apiBase.checkStatusCode(item,"200");
         itemId = item.path("id");
         driver.get("http://dsternlicht.github.io/RESTool/#/characters?search=");
     }
 
-    @Test
+    @Test(timeOut = 60)
     public void checkItem() throws InterruptedException {
         MixTestPage mixTestPage = new MixTestPage(driver);
         mixTestPage.checkItemByItemValue(itemId);
     }
 
-    @AfterMethod
+    @AfterMethod(timeOut = 60)
     public void cleanUpItem(){
         Response delete = apiBase.deleteRequest(baseUrl, "", null,
                 headers, "/api/character/" + itemId);
         apiBase.checkStatusCode(delete, "200");
-
-
     }
 }

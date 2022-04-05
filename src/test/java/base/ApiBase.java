@@ -35,17 +35,8 @@ public class ApiBase {
      */
     public void checkStatusCode(Response response, String statusCode) {
         String actualCode = String.valueOf(response.getStatusCode());
-        try {
-            Assert.assertEquals(actualCode, statusCode);
-        } catch (Exception e){
-            log.error("Status code is not match - In Class ApiBase line 37");
-        }
-//        if (actualCode.equals(statusCode)){
-//            log.info("Status code is match - In Class ApiBase line 37");
-//        } else {
-//
-//        }
-//        ;
+        Assert.assertEquals(actualCode, statusCode);
+        log.atError();
     }
 
     /**

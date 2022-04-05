@@ -142,6 +142,12 @@ public class TestExPage {
         click(signupButton);
     }
 
+    public void registerSel4(String name, String email){
+        insert(nameField, name);
+        insert(emailField, email);
+        click(signupButton);
+    }
+
     public void enterAccInfo(Map<String, String> accInfo){
         assertTrue(accInfoText.getText().equals("ENTER ACCOUNT INFORMATION"), "TEXT NOT MUTCH");
         assertTrue(name.isDisplayed(), "Name Is not visible");
